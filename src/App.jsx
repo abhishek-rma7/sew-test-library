@@ -12,13 +12,13 @@ function App() {
   const handleAccept = async (seq_num) => {
     try {
       const url = `https://sew-aws-back-jul24-a73826d13134.herokuapp.com/api/users/scan-success`;
-      const { data } = await axios.post(url, { token, seq_num });
+      const { data } = await axios.post(url, { token, step_number: seq_num });
       alert("Successfully completed the goal")
       if (seq_num === 3) {
         window.location.replace(data.url)
       }
     } catch (error) {
-      console.log(error.message)
+      alert(error.message)
     }
   }
 
