@@ -12,7 +12,7 @@ function App() {
   const handleAccept = async (seq_num, redirect = false) => {
     try {
       const url = `https://sew-aws-back-jul24-a73826d13134.herokuapp.com/api/users/scan-success`;
-      const { data } = await axios.post(url, { token, step_number: seq_num });
+      const { data } = await axios.post(url, { token, goal_key: seq_num });
       alert("Successfully completed the goal")
       if (redirect) {
         window.location.replace(data.url)
