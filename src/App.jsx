@@ -9,12 +9,12 @@ function App() {
 
   const token = query.get("token");
 
-  const handleAccept = async (seq_num) => {
+  const handleAccept = async (seq_num, redirect = false) => {
     try {
       const url = `https://sew-aws-back-jul24-a73826d13134.herokuapp.com/api/users/scan-success`;
       const { data } = await axios.post(url, { token, step_number: seq_num });
       alert("Successfully completed the goal")
-      if (seq_num === 3) {
+      if (redirect) {
         window.location.replace(data.url)
       }
     } catch (error) {
@@ -34,13 +34,13 @@ function App() {
       </div>
       <h1>SEW TEST URL</h1>
       <div className="card">
-        <button onClick={() => handleAccept(1)}>
+        <button onClick={() => handleAccept("login_goal_key")}>
           Handle Login
         </button>
-        <button onClick={() => handleAccept(2)}>
+        <button onClick={() => handleAccept("signup_goal_key")}>
           Handle SignUp
         </button>
-        <button onClick={() => handleAccept(3)}>
+        <button onClick={() => handleAccept("give_like_goal_key")}>
           Handle Give like and Redirect to SEW
         </button>
       </div>
