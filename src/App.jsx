@@ -18,7 +18,7 @@ function App() {
         window.location.replace(data.url)
       }
     } catch (error) {
-      alert(error.message)
+      alert(error.response.data.message ? error.response.data.message : error.message)
     }
   }
 
@@ -40,7 +40,7 @@ function App() {
         <button onClick={() => handleAccept("signup_goal_key")}>
           Handle SignUp
         </button>
-        <button onClick={() => handleAccept("give_like_goal_key")}>
+        <button onClick={() => handleAccept("give_like_goal_key", true)}>
           Handle Give like and Redirect to SEW
         </button>
       </div>
